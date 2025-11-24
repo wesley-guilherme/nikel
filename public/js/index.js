@@ -2,7 +2,7 @@ const myModal = new bootstrap.Modal("#registerModal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
-chekLogged();
+checkLogged();
 
 //LOGAR NO SISTEMA
 document.getElementById("login-form").addEventListener("submit", function(e) {
@@ -59,7 +59,7 @@ document.getElementById("create-form").addEventListener("submit", function(e) {
     alert("Conta criada com sucesso");
 });
 
-    function chekLogged() {
+    function checkLogged() {
         if(session) {
             sessionStorage.setItem("logged", session)
             logged = session
