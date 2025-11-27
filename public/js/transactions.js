@@ -1,4 +1,4 @@
-const myModal = new bootstrap.Modal(document.getElementById("transaction-modal"));
+const myModal = new bootstrap.Modal("#transaction-modal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
@@ -40,7 +40,8 @@ checkLogged();
 
         if(!logged) {
 
-           window.location.href = "index.html" 
+           window.location.href = "index.html";
+           return;
         }
 
         const dataUser = localStorage.getItem(logged);
