@@ -8,6 +8,7 @@ let data = {
 
 document.getElementById("button-logout").addEventListener("click", logout)
 
+
     //ADICIONAR LANÇAMENTO
     document.getElementById("transaction-form").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -57,4 +58,6 @@ function logout() {
 
         window.location.href = "index.html";
     }
+
+    //PAREI AOS 17:23 de forma decrescente do timer
 
