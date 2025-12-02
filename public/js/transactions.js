@@ -1,4 +1,4 @@
-const myModal = new bootstrap.Modal("#transaction-modal");
+const myModal = new bootstrap.Modal("#transactionModal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
@@ -26,6 +26,7 @@ document.getElementById("button-logout").addEventListener("click", logout)
     e.target.reset();
     myModal.hide();
 
+    getTransactions();
 
     alert("Lançamento adicionado com sucesso.");
 
@@ -48,7 +49,9 @@ checkLogged();
         const dataUser = localStorage.getItem(logged);
         if(dataUser) {
             data = JSON.parse(dataUser);
-        }    
+        } 
+
+        getTransactions()
     
     }    
 
@@ -59,5 +62,32 @@ function logout() {
         window.location.href = "index.html";
     }
 
-    //PAREI AOS 17:23 de forma decrescente do timer
+    function getTransactions() {
+        const transactions = data.transactions;
+        let transactionsHtml = ``;
+
+        if(transactions.length) {
+            transactions.forEach((item) => {
+                let type = "Entrada";
+
+                if(item.type === "2") {
+                    type = "Saída";
+                }
+
+                transactionsHtml += `
+                <tr>
+                    <th scope="row">${item.date}</th>
+                    <td>${item.value.toFixed(2)}</td>
+                    <td>${type}</td>
+                    <td>${item.description}</td>
+                </tr>                
+                `
+            })
+        }
+        document.getElementById("transactions-list").innerHTML = transactionsHtml;
+    }
+
+        function saveData(data) {
+        localStorage.setItem(data.login, JSON.stringify(data));
+    }
 
